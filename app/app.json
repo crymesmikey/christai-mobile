@@ -30,12 +30,12 @@
         "projectId": "YOUR_EAS_PROJECT_ID"
       },
       "backendUrl": "http://localhost:3000/api",
-      "firebaseApiKey": "YOUR_FIREBASE_API_KEY",
-      "firebaseAuthDomain": "YOUR_PROJECT_ID.firebaseapp.com",
-      "firebaseProjectId": "YOUR_PROJECT_ID",
-      "firebaseStorageBucket": "YOUR_PROJECT_ID.appspot.com",
-      "firebaseMessagingSenderId": "YOUR_MESSAGING_SENDER_ID",
-      "firebaseAppId": "YOUR_FIREBASE_APP_ID"
+      "firebaseApiKey": "AIzaSyBtlkt38ymZjnpNhNNy0JvoowqeZmBMAPg",
+      "firebaseAuthDomain": "christai-58eaf.firebaseapp.com",
+      "firebaseProjectId": "christai-58eaf",
+      "firebaseStorageBucket": "christai-58eaf.firebasestorage.app",
+      "firebaseMessagingSenderId": "78452698081",
+      "firebaseAppId": "1:78452698081:web:6f0ef448eecaaadf0ac0a0"
     }
   }
 }
