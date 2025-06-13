@@ -13,7 +13,8 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mbutler72.christai-mobile"
     },
     "android": {
       "adaptiveIcon": {
@@ -30,12 +31,15 @@
         "projectId": "YOUR_EAS_PROJECT_ID"
       },
       "backendUrl": "http://localhost:3000/api",
-      "firebaseApiKey": "AIzaSyBtlkt38ymZjnpNhNNy0JvoowqeZmBMAPg",
-      "firebaseAuthDomain": "christai-58eaf.firebaseapp.com",
-      "firebaseProjectId": "christai-58eaf",
-      "firebaseStorageBucket": "christai-58eaf.firebasestorage.app",
-      "firebaseMessagingSenderId": "78452698081",
-      "firebaseAppId": "1:78452698081:web:6f0ef448eecaaadf0ac0a0"
+      "firebase": {
+        "apiKey": "your-api-key",
+        "authDomain": "your-auth-domain",
+        "projectId": "your-project-id",
+        "storageBucket": "your-storage-bucket",
+        "messagingSenderId": "your-messaging-sender-id",
+        "appId": "your-app-id",
+        "measurementId": "your-measurement-id"
+      }
     }
   }
 }

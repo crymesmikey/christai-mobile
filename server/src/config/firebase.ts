@@ -6,21 +6,14 @@ import * as admin from 'firebase-admin';
 // The value for 'FIREBASE_SERVICE_ACCOUNT_BASE64' should be the base64 encoded string of your service account JSON file.
 // Command to encode: `cat /path/to/your/serviceAccountKey.json | base64`
 
-const serviceAccountBase64 = process.env.FIREBASE_SERVICE_ACCOUNT_BASE64;
-
-if (!serviceAccountBase64) {
-  console.error(
-    'Firebase service account key not found. ' +
-    'Please set the FIREBASE_SERVICE_ACCOUNT_BASE64 environment variable.'
-  );
-  // process.exit(1); // In a real app, you'd want to exit if the config is missing.
-}
-
-const serviceAccountJson = serviceAccountBase64
-  ? Buffer.from(serviceAccountBase64, 'base64').toString('ascii')
-  : '{}';
-
 try {
+  const serviceAccountBase64 = process.env.FIREBASE_SERVICE_ACCOUNT_BASE64;
+
+  if (!serviceAccountBase64) {
+    throw new Error('Firebase service account key not found. Please set the FIREBASE_SERVICE_ACCOUNT_BASE64 environment variable.');
+  }
+
+  const serviceAccountJson = Buffer.from(serviceAccountBase64, 'base64').toString('utf-8');
   const serviceAccount = JSON.parse(serviceAccountJson);
 
   admin.initializeApp({
@@ -30,9 +23,9 @@ try {
   
   console.log('Firebase Admin initialized successfully.');
 
-} catch (error) {
+} catch (error: any) {
     console.error('Error initializing Firebase Admin:', error);
-    console.log("Please make sure you have set the FIREBASE_SERVICE_ACCOUNT_BASE64 and FIREBASE_DATABASE_URL environment variables correctly.")
+    console.error('Please make sure you have set the FIREBASE_SERVICE_ACCOUNT_BASE64 and FIREBASE_DATABASE_URL environment variables correctly.');
 }
 
 

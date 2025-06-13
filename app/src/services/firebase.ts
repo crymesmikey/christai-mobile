@@ -1,19 +1,25 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp, getApps } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import Constants from 'expo-constants';
 
-// IMPORTANT: Replace the placeholder values below with your own Firebase project configuration.
-// You can find this in the Firebase Console:
-// Project settings > General > Your apps > Web app > Firebase SDK snippet > Config
 const firebaseConfig = {
-  apiKey: Constants.expoConfig?.extra?.firebaseApiKey || 'YOUR_API_KEY',
-  authDomain: Constants.expoConfig?.extra?.firebaseAuthDomain || 'YOUR_AUTH_DOMAIN',
-  projectId: Constants.expoConfig?.extra?.firebaseProjectId || 'YOUR_PROJECT_ID',
-  storageBucket: Constants.expoConfig?.extra?.firebaseStorageBucket || 'YOUR_STORAGE_BUCKET',
-  messagingSenderId: Constants.expoConfig?.extra?.firebaseMessagingSenderId || 'YOUR_MESSAGING_SENDER_ID',
-  appId: Constants.expoConfig?.extra?.firebaseAppId || 'YOUR_APP_ID',
+  apiKey: Constants.expoConfig?.extra?.firebase.apiKey,
+  authDomain: Constants.expoConfig?.extra?.firebase.authDomain,
+  projectId: Constants.expoConfig?.extra?.firebase.projectId,
+  storageBucket: Constants.expoConfig?.extra?.firebase.storageBucket,
+  messagingSenderId: Constants.expoConfig?.extra?.firebase.messagingSenderId,
+  appId: Constants.expoConfig?.extra?.firebase.appId,
+  measurementId: Constants.expoConfig?.extra?.firebase.measurementId,
 };
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app); 
+// Initialize Firebase app only if it hasn't been initialized
+let app;
+if (getApps().length === 0) {
+  app = initializeApp(firebaseConfig);
+} else {
+  app = getApps()[0];
+}
+
+const auth = getAuth(app);
+
+export { app, auth }; 
